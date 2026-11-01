@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dven1smb1x7ws"]
+
+[ext_resource type="Script" uid="uid://bjbd57arh2y36" path="res://Scripts/bullet.gd" id="1_54jiv"]
+[ext_resource type="Texture2D" uid="uid://dsl8vcvol51eh" path="res://Sprites/EnemyBullet.png" id="2_b6yqb"]
+[ext_resource type="PackedScene" uid="uid://u2ovyqixd47t" path="res://Scenes/trail.tscn" id="3_72t2l"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_b6yqb"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oaldl"]
+radius = 5.0
+
+[node name="EnemyBullet" type="RigidBody2D" unique_id=1521186797]
+collision_layer = 16
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_b6yqb")
+gravity_scale = 0.0
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("1_54jiv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=420690151]
+texture = ExtResource("2_b6yqb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=822399780]
+shape = SubResource("CircleShape2D_oaldl")
+
+[node name="Trail" parent="." unique_id=894242684 instance=ExtResource("3_72t2l")]
+default_color = Color(1, 0, 0.17254902, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

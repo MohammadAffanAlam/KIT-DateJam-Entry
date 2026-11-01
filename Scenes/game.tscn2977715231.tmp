@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://demk546cfjkhx"]
+
+[ext_resource type="PackedScene" uid="uid://ciubfe23a3ur1" path="res://Scenes/ship.tscn" id="1_ebmjs"]
+[ext_resource type="Script" uid="uid://bytq07hfy6uo7" path="res://Scripts/game_manager.gd" id="1_wrm1d"]
+[ext_resource type="PackedScene" uid="uid://o1j70yy00ps2" path="res://Scenes/enemy.tscn" id="2_3dryh"]
+[ext_resource type="PackedScene" uid="uid://f36vd5md4ave" path="res://Scenes/bullet.tscn" id="2_qxrlw"]
+[ext_resource type="Script" uid="uid://bm84bpvxjeeui" path="res://Scripts/starting_target.gd" id="5_i6g32"]
+[ext_resource type="Texture2D" uid="uid://j6ii1p4lj17j" path="res://icon.svg" id="5_wowpa"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_oaldl"]
+distance = 1.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_axduw"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oaldl"]
+radius = 49.010204
+
+[node name="Game" type="Node2D" unique_id=1738925669]
+
+[node name="GameManager" type="Node" parent="." unique_id=556743695]
+unique_name_in_owner = true
+script = ExtResource("1_wrm1d")
+
+[node name="EnemyManager" type="Node" parent="." unique_id=1929809671]
+unique_name_in_owner = true
+
+[node name="Enemy" parent="EnemyManager" unique_id=790501599 instance=ExtResource("2_3dryh")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1991565955]
+
+[node name="Bullet" parent="." unique_id=1511034382 instance=ExtResource("2_qxrlw")]
+position = Vector2(158, -3)
+
+[node name="Player" parent="." unique_id=1710057924 instance=ExtResource("1_ebmjs")]
+unique_name_in_owner = true
+
+[node name="Border" type="StaticBody2D" parent="." unique_id=317795913]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border" unique_id=1634938351]
+position = Vector2(0, 285)
+shape = SubResource("WorldBoundaryShape2D_oaldl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Border" unique_id=1591350111]
+position = Vector2(0, -274)
+rotation = 3.1415927
+shape = SubResource("WorldBoundaryShape2D_oaldl")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Border" unique_id=117832929]
+position = Vector2(493, -4)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_oaldl")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Border" unique_id=1955000069]
+position = Vector2(-489, -8)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_oaldl")
+
+[node name="StartingTarget" type="StaticBody2D" parent="." unique_id=1665977521]
+position = Vector2(-167, 0)
+collision_layer = 8
+collision_mask = 4
+physics_material_override = SubResource("PhysicsMaterial_axduw")
+constant_linear_velocity = Vector2(50, 50)
+script = ExtResource("5_i6g32")
+
+[node name="Sprite2D" type="Sprite2D" parent="StartingTarget" unique_id=204290423]
+scale = Vector2(0.75, 0.765625)
+texture = ExtResource("5_wowpa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StartingTarget" unique_id=705657545]
+shape = SubResource("CircleShape2D_oaldl")

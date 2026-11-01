@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://o1j70yy00ps2"]
+
+[ext_resource type="Script" uid="uid://c53wijsrembbt" path="res://Scripts/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Texture2D" uid="uid://dro144ikjybrw" path="res://Sprites/EnemySpaceShipSprite.png" id="2_1f0kj"]
+[ext_resource type="AudioStream" uid="uid://ckcd7s3w3vko4" path="res://SFX/explosion.wav" id="3_afpow"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i6g32"]
+height = 35.0
+
+[node name="Enemy" type="CharacterBody2D" unique_id=790501599]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("1_1f0kj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=218319553]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_i6g32")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=826266562]
+texture = ExtResource("2_1f0kj")
+
+[node name="ShootingTimer" type="Timer" parent="." unique_id=1736835142]
+process_mode = 1
+autostart = true
+
+[node name="InvulnerabilityTimer" type="Timer" parent="." unique_id=1094346329]
+one_shot = true
+
+[node name="BulletLocation" type="Node2D" parent="." unique_id=1323830107]
+position = Vector2(16, 0)
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="." unique_id=774889946]
+stream = ExtResource("3_afpow")
+volume_db = -15.0
+
+[connection signal="timeout" from="ShootingTimer" to="." method="_on_shooting_timer_timeout"]

@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://csvcuxgk13dl"]
+
+[ext_resource type="FontFile" uid="uid://doptbamstsqry" path="res://fonts/PixelOperator8-Bold.ttf" id="1_8fo1c"]
+[ext_resource type="Script" uid="uid://bvisiectf1eq2" path="res://Scripts/game_over.gd" id="1_ek8ke"]
+[ext_resource type="FontFile" uid="uid://1a8wisitf218" path="res://fonts/PixelOperator8.ttf" id="2_ek8ke"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qyt1"]
+bg_color = Color(0.31, 0.31, 0.31, 1)
+
+[node name="GameOver" type="Node2D" unique_id=306874538]
+script = ExtResource("1_ek8ke")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=588040665]
+
+[node name="Background" type="ColorRect" parent="." unique_id=524342737]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+offset_left = -961.0
+offset_top = -541.0
+offset_right = 956.0
+offset_bottom = 523.0
+
+[node name="Label" type="Label" parent="." unique_id=1660677062]
+offset_left = -280.0
+offset_top = -250.0
+offset_right = 280.0
+offset_bottom = -185.0
+theme_override_colors/font_color = Color(0.95369786, 0, 0.063368, 1)
+theme_override_fonts/font = ExtResource("1_8fo1c")
+theme_override_font_sizes/font_size = 64
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=407493482]
+offset_left = -75.0
+offset_top = 10.0
+offset_right = 75.0
+offset_bottom = 60.0
+theme_override_fonts/font = ExtResource("2_ek8ke")
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_4qyt1")
+text = "Retry"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

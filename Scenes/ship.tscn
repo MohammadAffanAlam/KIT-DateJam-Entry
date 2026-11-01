@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://ciubfe23a3ur1"]
+
+[ext_resource type="Script" uid="uid://blp37lgrio2xg" path="res://Scripts/ship.gd" id="1_4qyt1"]
+[ext_resource type="Texture2D" uid="uid://dcvybccqln7xo" path="res://Sprites/FriendlySpaceShipSprite.png" id="2_4qyt1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wowpa"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oaldl"]
+radius = 40.0
+
+[sub_resource type="Animation" id="Animation_4qyt1"]
+resource_name = "Invulnerable"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.25882354), Color(1, 1, 1, 1), Color(1, 1, 1, 0.25882354), Color(1, 1, 1, 1), Color(1, 1, 1, 0.25882354)]
+}
+
+[sub_resource type="Animation" id="Animation_xxxu3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ejuo"]
+_data = {
+&"Invulnerable": SubResource("Animation_4qyt1"),
+&"RESET": SubResource("Animation_xxxu3")
+}
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1710057924]
+collision_mask = 2
+script = ExtResource("1_4qyt1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1318958269]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_wowpa")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1271269822]
+texture = ExtResource("2_4qyt1")
+
+[node name="ShootingTimer" type="Timer" parent="." unique_id=1857587165]
+process_mode = 1
+autostart = true
+
+[node name="InvulnerabilityTimer" type="Timer" parent="." unique_id=186278205]
+one_shot = true
+
+[node name="BulletLocation" type="Node2D" parent="." unique_id=1870392864]
+position = Vector2(16, 0)
+
+[node name="SpawnRadius" type="Area2D" parent="." unique_id=1966358921]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnRadius" unique_id=1467539156]
+shape = SubResource("CircleShape2D_oaldl")
+
+[node name="InvulnerabilityAnimation" type="AnimationPlayer" parent="." unique_id=375912039]
+libraries/ = SubResource("AnimationLibrary_6ejuo")
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="." unique_id=825258657]
+
+[connection signal="timeout" from="ShootingTimer" to="." method="_on_shooting_timer_timeout"]
+[connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_invulnerability_timer_timeout"]

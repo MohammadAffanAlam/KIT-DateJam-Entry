@@ -1,0 +1,380 @@
+[gd_scene format=3 uid="uid://demk546cfjkhx"]
+
+[ext_resource type="PackedScene" uid="uid://ciubfe23a3ur1" path="res://Scenes/ship.tscn" id="1_ebmjs"]
+[ext_resource type="Script" uid="uid://bytq07hfy6uo7" path="res://Scripts/game_manager.gd" id="1_wrm1d"]
+[ext_resource type="FontFile" uid="uid://doptbamstsqry" path="res://fonts/PixelOperator8-Bold.ttf" id="2_i6g32"]
+[ext_resource type="FontFile" uid="uid://1a8wisitf218" path="res://fonts/PixelOperator8.ttf" id="2_wowpa"]
+[ext_resource type="Texture2D" uid="uid://crn8pc5guec0t" path="res://Sprites/HeartSprite.png" id="3_1l0tm"]
+[ext_resource type="Script" uid="uid://bm84bpvxjeeui" path="res://Scripts/starting_target.gd" id="5_i6g32"]
+[ext_resource type="AudioStream" uid="uid://cdif3flwe5ew6" path="res://SFX/S31-Let the Games Begin.ogg" id="8_h4fw4"]
+[ext_resource type="Texture2D" uid="uid://br0lmiswkdmu8" path="res://Sprites/TargetSprite.png" id="8_v158k"]
+
+[sub_resource type="Animation" id="Animation_1l0tm"]
+resource_name = "1 Life"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Health/1st Life:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Health/2nd Life:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Health/3rd Life:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_v158k"]
+resource_name = "2 Lives"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Health/1st Life:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Health/2nd Life:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Health/3rd Life:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wowpa"]
+resource_name = "New Wave Countdown"
+length = 3.0000000000000004
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CountdownLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["3", "2", "1"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CountdownLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Health/1st Life:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Health/2nd Life:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Health/3rd Life:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_i6g32"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CountdownLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["3"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CountdownLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Health/1st Life:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Health/2nd Life:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Health/3rd Life:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1l0tm"]
+_data = {
+&"1 Life": SubResource("Animation_1l0tm"),
+&"2 Lives": SubResource("Animation_v158k"),
+&"New Wave Countdown": SubResource("Animation_wowpa"),
+&"RESET": SubResource("Animation_i6g32")
+}
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_oaldl"]
+distance = 1.0
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_axduw"]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oaldl"]
+radius = 32.0
+
+[node name="Game" type="Node2D" unique_id=1738925669]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=1078144998]
+follow_viewport_enabled = true
+
+[node name="CountdownLabel" type="Label" parent="UI" unique_id=701645048]
+visible = false
+z_index = 3
+offset_left = -21.0
+offset_top = -14.0
+offset_right = 19.0
+offset_bottom = 18.0
+theme_override_fonts/font = ExtResource("2_wowpa")
+theme_override_font_sizes/font_size = 32
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UIAnimation" type="AnimationPlayer" parent="UI" unique_id=1829860312]
+unique_name_in_owner = true
+process_mode = 3
+libraries/ = SubResource("AnimationLibrary_1l0tm")
+
+[node name="WaveLabel" type="Label" parent="UI" unique_id=71848959]
+offset_left = -221.0
+offset_top = -126.0
+offset_right = -131.0
+offset_bottom = -103.0
+theme_override_fonts/font = ExtResource("2_i6g32")
+text = "Wave 0"
+
+[node name="Health" type="Node" parent="UI" unique_id=2109329169]
+
+[node name="1st Life" type="Sprite2D" parent="UI/Health" unique_id=1877287361]
+position = Vector2(210, -119)
+texture = ExtResource("3_1l0tm")
+
+[node name="2nd Life" type="Sprite2D" parent="UI/Health" unique_id=1797778908]
+position = Vector2(190, -119)
+texture = ExtResource("3_1l0tm")
+
+[node name="3rd Life" type="Sprite2D" parent="UI/Health" unique_id=1671827140]
+position = Vector2(170, -119)
+texture = ExtResource("3_1l0tm")
+
+[node name="GameManager" type="Node" parent="." unique_id=556743695]
+unique_name_in_owner = true
+process_mode = 3
+script = ExtResource("1_wrm1d")
+
+[node name="EnemyManager" type="Node" parent="GameManager" unique_id=340836890]
+
+[node name="BulletManager" type="Node" parent="GameManager" unique_id=678275010]
+unique_name_in_owner = true
+
+[node name="Background" type="ColorRect" parent="GameManager" unique_id=924859754]
+modulate = Color(0, 0, 0, 1)
+z_index = -1
+offset_left = -440.0
+offset_top = -254.0
+offset_right = 435.0
+offset_bottom = 236.0
+
+[node name="WaveStartCountdown" type="Timer" parent="GameManager" unique_id=1428130253]
+wait_time = 3.0
+one_shot = true
+ignore_time_scale = true
+
+[node name="WaveStartingTint" type="CanvasModulate" parent="GameManager" unique_id=591965122]
+visible = false
+color = Color(0.32172796, 0.32172796, 0.32172793, 1)
+
+[node name="PlayAreaBorder" type="ColorRect" parent="GameManager" unique_id=107795837]
+z_index = -1
+offset_left = -222.0
+offset_top = -107.0
+offset_right = 222.0
+offset_bottom = 127.0
+color = Color(3.513545e-06, 0.7761982, 0.398016, 1)
+
+[node name="PlayArea" type="ColorRect" parent="GameManager" unique_id=1714876465]
+z_index = -1
+offset_left = -220.0
+offset_top = -105.0
+offset_right = 220.0
+offset_bottom = 125.0
+color = Color(0.44467714, 0.4446497, 0.42550623, 1)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1991565955]
+zoom = Vector2(2.5, 2.5)
+
+[node name="Player" parent="." unique_id=1710057924 instance=ExtResource("1_ebmjs")]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(132, -2)
+
+[node name="Border" type="StaticBody2D" parent="." unique_id=317795913]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Border" unique_id=1634938351]
+position = Vector2(0, 125)
+shape = SubResource("WorldBoundaryShape2D_oaldl")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Border" unique_id=1591350111]
+position = Vector2(0, -105)
+rotation = 3.1415927
+shape = SubResource("WorldBoundaryShape2D_oaldl")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Border" unique_id=117832929]
+position = Vector2(220, 0)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_oaldl")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Border" unique_id=1955000069]
+position = Vector2(-220, 0)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_oaldl")
+
+[node name="StartingTarget" type="RigidBody2D" parent="." unique_id=1377711852]
+collision_layer = 8
+collision_mask = 6
+mass = 10000000.0
+physics_material_override = SubResource("PhysicsMaterial_axduw")
+gravity_scale = 0.0
+lock_rotation = true
+freeze = true
+freeze_mode = 1
+linear_velocity = Vector2(50, 50)
+linear_damp_mode = 1
+angular_damp_mode = 1
+script = ExtResource("5_i6g32")
+
+[node name="Sprite2D" type="Sprite2D" parent="StartingTarget" unique_id=204290423]
+texture = ExtResource("8_v158k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StartingTarget" unique_id=705657545]
+shape = SubResource("CircleShape2D_oaldl")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=185660353]
+process_mode = 3
+stream = ExtResource("8_h4fw4")
+autoplay = true
+
+[connection signal="timeout" from="GameManager/WaveStartCountdown" to="GameManager" method="_on_wave_start_countdown_timeout"]
+[connection signal="body_entered" from="StartingTarget" to="StartingTarget" method="_on_body_entered"]
